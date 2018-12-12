@@ -6,7 +6,7 @@ public class Funcionario implements Serializable {
 
     private Long id;
     private String nome;
-    private String funcao;
+    private Funcao funcao;
 
     public Long getId() {
         return id;
@@ -24,11 +24,11 @@ public class Funcionario implements Serializable {
         this.nome = nome;
     }
 
-    public String getFuncao() {
+    public Funcao getFuncao() {
         return funcao;
     }
 
-    public void setFuncao(String funcao) {
+    public void setFuncao(Funcao funcao) {
         this.funcao = funcao;
     }
 }

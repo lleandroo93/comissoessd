@@ -23,6 +23,7 @@
                 <h:outputLabel value="PREÇO:"/>
                 <h:panelGroup>
                     <h:inputText id="preco" value="#{produtoBean.produto.preco}" required="true">
+                        <f:convertNumber locale="pt_BR" minFractionDigits="2" maxFractionDigits="2"/>
                         <f:validateDoubleRange minimum="0"/>
                     </h:inputText>
                     <h:message for="preco"/>
@@ -36,7 +37,7 @@
             </h:panelGrid>
 
             <h:commandButton value="SALVAR" action="#{produtoBean.salvar()}"/>
-            <h:commandButton value="CANCELAR" action="index?faces-redirect=true"/>
+            <h:commandButton value="CANCELAR" action="index?faces-redirect=true" immediate="true"/>
         </h:form>
     </h:body>
 </html>

@@ -2,9 +2,10 @@ package br.com.sd.comissoes.dominio;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Objects;
 
 public class Meta implements Serializable {
-    
+
     private Long id;
     private String nome;
     private Integer quantidadeMinima;
@@ -43,8 +44,28 @@ public class Meta implements Serializable {
     }
 
     @Override
-    public String toString() {
-        return getNome();
+    public int hashCode() {
+        int hash = 3;
+        hash = 29 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Meta other = (Meta) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
     }
     
 }

@@ -1,4 +1,4 @@
-package br.com.sd.comissoes.bean;
+package br.com.sd.comissoes.view;
 
 import br.com.sd.comissoes.dominio.Meta;
 import java.io.Serializable;

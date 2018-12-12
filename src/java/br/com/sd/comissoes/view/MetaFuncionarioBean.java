@@ -1,10 +1,8 @@
-package br.com.sd.comissoes.bean;
+package br.com.sd.comissoes.view;
 
-import br.com.sd.comissoes.dominio.Funcionario;
-import br.com.sd.comissoes.dominio.Meta;
-import br.com.sd.comissoes.dominio.MetaFuncionario;
+import br.com.sd.comissoes.dominio.*;
+import br.com.sd.comissoes.service.*;
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
@@ -15,30 +13,18 @@ import javax.faces.bean.ViewScoped;
 public class MetaFuncionarioBean implements Serializable {
     
     private List<Meta> metas;
+    private List<Funcionario> funcionarios;
+    
     private Meta meta;
     private Funcionario funcionario;
     private List<MetaFuncionario> metaFuncionario;
     private MetaFuncionario metaFuncionarioSelecionada;
 
     public MetaFuncionarioBean() {
-        this.funcionario = new Funcionario();
-        this.meta = new Meta();
         this.metaFuncionario = new ArrayList<>();
-        this.metas = criaMetas();
-    }
-    
-    public List<Meta> criaMetas() {
-        List<Meta> list = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
-            Meta meta = new Meta();
-            meta.setId((long) i+1);
-            meta.setNome("META " + i+1);
-            meta.setQuantidadeMinima(i * 100);
-            meta.setPorcentagemComissao(new BigDecimal(10 + (i* 5)));
-            
-            list.add(meta);
-        }
-        return list;
+        
+        this.metas = new MetaService().listar();
+        this.funcionarios = new FuncionarioService().listar();
     }
     
     public void removerDaLista() {
@@ -54,10 +40,14 @@ public class MetaFuncionarioBean implements Serializable {
     }
     
     public void salvar () {
+        MetaFuncionarioService metaFuncionarioService = new MetaFuncionarioService();
+        metaFuncionarioService.salvar(metaFuncionario);
         
+        this.meta = null;
+        this.funcionario = null;
+        this.metaFuncionario.clear();
+        this.metaFuncionarioSelecionada = null;
     }
-    
-    
 
     public List<MetaFuncionario> getMetaFuncionario() {
         return metaFuncionario;
@@ -79,6 +69,10 @@ public class MetaFuncionarioBean implements Serializable {
         return funcionario;
     }
 
+    public void setFuncionario(Funcionario funcionario) {
+        this.funcionario = funcionario;
+    }
+    
     public MetaFuncionario getMetaFuncionarioSelecionada() {
         return metaFuncionarioSelecionada;
     }
@@ -86,5 +80,11 @@ public class MetaFuncionarioBean implements Serializable {
     public void setMetaFuncionarioSelecionada(MetaFuncionario metaFuncionarioSelecionada) {
         this.metaFuncionarioSelecionada = metaFuncionarioSelecionada;
     }
+
+    public List<Funcionario> getFuncionarios() {
+        return funcionarios;
+    }
+    
+    
     
 }
