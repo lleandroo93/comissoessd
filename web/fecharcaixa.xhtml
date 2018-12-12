@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Cadastrar Produtos</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <h:form id="formulario">
+            <h1> FECHAR CAIXA </h1>
+
+            <h:messages infoStyle="color:green" globalOnly="true" showDetail="true"/>
+
+            <h:panelGrid columns="2">
+                <h:outputLabel value="DATA:"/>
+                <h:panelGroup>
+                    <h:inputText id="data" value="#{caixaBean.caixa.data}" required="true">
+                        <f:convertDateTime pattern="dd/MM/yyyy"/>
+                    </h:inputText>
+                    <h:message for="data"/>
+                </h:panelGroup>
+
+                <h:outputLabel value="FILTRAR PRODUTO:"/>
+                <h:inputText id="filtro" value="#{caixaBean.filtro}"/>
+            </h:panelGrid>
+            
+            <h:dataTable value="#{caixaBean.produtos}" var="produto" border="1">
+                <h:column>
+                    <f:facet name="header">
+                        PRODUTO
+                    </f:facet>
+                    <h:outputText value="#{produto.nome}"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">
+                        SAÍDA
+                    </f:facet>
+                    <h:outputText value="#{produto.saida}"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">
+                        ESTOQUE
+                    </f:facet>
+                    <h:outputText value="#{produto.estoque}"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">
+                        EDITAR
+                    </f:facet>
+                    <h:commandButton image="imagens/edit.png"/>
+                </h:column>
+            </h:dataTable>
+
+            <h:commandButton value="SALVAR" action="#{caixaBean.salvar()}"/>
+            <h:commandButton value="CANCELAR" action="index?faces-redirect=true"/>
+        </h:form>
+    </h:body>
+</html>

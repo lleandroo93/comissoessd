@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Cadastrar Funcionários</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h1>CADASTRAR META DO FUNCIONARIO</h1>
+            <h:panelGrid columns="2">
+                <h:outputLabel value="FUNCIONARIO"/>
+                <h:inputText value="#{metaFuncionarioBean.funcionario.nome}" required="true"/>
+                
+                <h:outputLabel value="META:"/>
+                <h:selectOneMenu value="#{metaFuncionarioBean.meta}">
+                    <f:selectItems value="#{metaFuncionarioBean.metas}"/>
+                </h:selectOneMenu>
+                
+                <h:commandButton image="imagens/add.png" action="#{metaFuncionarioBean.adicionar()}"/>
+                
+            </h:panelGrid>
+            
+            <ol>
+                <ui:repeat var="metaFuncionario" value="#{metaFuncionarioBean.metaFuncionario}">
+                    <li>#{metaFuncionario.meta.quantidadeMinima}
+                        #{metaFuncionario.meta.porcentagemComissao}
+                        <h:commandButton image="imagens/remove.png" action="#{metaFuncionarioBean.removerDaLista()}">
+                            <f:setPropertyActionListener target="#{metaFuncionarioBean.metaFuncionarioSelecionada}"
+                                                         value="#{metaFuncionario}"/>
+                        </h:commandButton>
+                    </li>
+                </ui:repeat>
+            </ol>
+            
+            <h:commandButton value="SALVAR" action="#{metaFuncionarioBean.salvar()}"/>
+            <h:commandButton value="CANCELAR" action="index?faces-redirect=true"/>
+        </h:form>
+    </h:body>
+</html>
