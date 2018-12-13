@@ -1,8 +1,10 @@
 package br.com.sd.comissoes.service;
 
 import br.com.sd.comissoes.dominio.Funcao;
+import br.com.sd.comissoes.util.HibernateUtil;
 import java.util.ArrayList;
 import java.util.List;
+import org.hibernate.Session;
 
 public class FuncaoService {
 

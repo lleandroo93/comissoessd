@@ -10,6 +10,8 @@
     <h:body>
         <h:form>
             <h1>CADASTRAR FUNCIONÁRIO</h1>
+            <h:messages globalOnly="true"/>
+            
             <h:panelGrid columns="2">
                 <h:outputLabel value="NOME:"/>
                 <h:inputText value="#{funcionarioBean.funcionario.nome}" required="true"/>

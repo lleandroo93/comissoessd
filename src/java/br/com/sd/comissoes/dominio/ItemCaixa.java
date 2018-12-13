@@ -7,17 +7,17 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Transient;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
-public class Produto implements Serializable{   
+public class ItemCaixa implements Serializable{
     
     private Long id;
-    private String nome;
+    private Caixa caixa;
+    private Produto produto;
+    private Funcionario funcionario;
     private BigDecimal preco;
-    private Long estoque;
-    
-    private Long saida; // Transient
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,12 +29,34 @@ public class Produto implements Serializable{
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    @ManyToOne
+    @JoinColumn(name = "caixa_id")
+    public Caixa getCaixa() {
+        return caixa;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setCaixa(Caixa caixa) {
+        this.caixa = caixa;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "produto_id")
+    public Produto getProduto() {
+        return produto;
+    }
+
+    public void setProduto(Produto produto) {
+        this.produto = produto;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "funcionario_id")
+    public Funcionario getFuncionario() {
+        return funcionario;
+    }
+
+    public void setFuncionario(Funcionario funcionario) {
+        this.funcionario = funcionario;
     }
 
     public BigDecimal getPreco() {
@@ -44,28 +66,11 @@ public class Produto implements Serializable{
     public void setPreco(BigDecimal preco) {
         this.preco = preco;
     }
-    
-    public Long getEstoque() {
-        return estoque;
-    }
-
-    public void setEstoque(Long estoque) {
-        this.estoque = estoque;
-    }
-
-    @Transient
-    public Long getSaida() {
-        return saida;
-    }
-
-    public void setSaida(Long saida) {
-        this.saida = saida;
-    }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 29 * hash + Objects.hashCode(this.id);
+        hash = 19 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -80,12 +85,13 @@ public class Produto implements Serializable{
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Produto other = (Produto) obj;
+        final ItemCaixa other = (ItemCaixa) obj;
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
         return true;
     }
+    
     
     
 }

@@ -3,7 +3,12 @@ package br.com.sd.comissoes.dominio;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
 public class Meta implements Serializable {
 
     private Long id;
@@ -11,6 +16,8 @@ public class Meta implements Serializable {
     private Integer quantidadeMinima;
     private BigDecimal porcentagemComissao;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getId() {
         return id;
     }

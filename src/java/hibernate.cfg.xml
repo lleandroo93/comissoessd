@@ -7,5 +7,15 @@
     <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/comissao</property>
     <property name="hibernate.connection.username">postgres</property>
     <property name="hibernate.connection.password">postgres</property>
+    <property name="hibernate.show_sql">true</property>
+    <property name="hibernate.format_sql">true</property>
+    <mapping class="br.com.sd.comissoes.dominio.Caixa"/>
+    <mapping class="br.com.sd.comissoes.dominio.Funcao"/>
+    <mapping class="br.com.sd.comissoes.dominio.Funcionario"/>
+    <mapping class="br.com.sd.comissoes.dominio.ItemCaixa"/>
+    <mapping class="br.com.sd.comissoes.dominio.Meta"/>
+    <mapping class="br.com.sd.comissoes.dominio.MetaFuncao"/>
+    <mapping class="br.com.sd.comissoes.dominio.MetaFuncionario"/>
+    <mapping class="br.com.sd.comissoes.dominio.Produto"/>
   </session-factory>
 </hibernate-configuration>

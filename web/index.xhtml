@@ -8,9 +8,9 @@
     <h:body>
         
         <h:graphicImage value="/imagens/logo.png" style="height: 100px"/> <br/>
-        Cadastros
         
         <h:form>
+            Cadastros
             <ol>
                 <li><h:commandLink value="Produto" action="produto?faces-redirect=true"/></li>
                 <li><h:commandLink value="Funcionários" action="funcionario?faces-redirect=true"/></li>
@@ -19,7 +19,18 @@
                 <li><h:commandLink value="Metas dos Funcionários" action="metafuncionario?faces-redirect=true"/></li>
                 <li><h:commandLink value="Fechar Caixa" action="fecharcaixa?faces-redirect=true"/></li>
             </ol>
+            Consultas
+            <ol>
+                <li><h:commandLink value="Produto" action="consulta/produto?faces-redirect=true"/></li>
+                <li><h:commandLink value="Funcionários" action="consulta/funcionario?faces-redirect=true"/></li>
+                <li><h:commandLink value="Metas" action="meta?faces-redirect=true"/></li>
+                <li><h:commandLink value="Metas das Funções" action="metafuncao?faces-redirect=true"/></li>
+                <li><h:commandLink value="Metas dos Funcionários" action="metafuncionario?faces-redirect=true"/></li>
+                <li><h:commandLink value="Fechar Caixa" action="fecharcaixa?faces-redirect=true"/></li>
+            </ol>
         </h:form>
+        
+        
     </h:body>
 </html>
 
